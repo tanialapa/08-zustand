@@ -1,19 +1,16 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Roboto } from 'next/font/google';
 import "./globals.css";
 
 import Providers from "../components/TanStackProvider/TanStackProvider";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const roboto = Roboto({
+  subsets: ['latin'], 
+  weight: ['400', '700'],
+  variable: '--font-roboto', 
+  display: 'swap', 
 });
 
 export const metadata: Metadata = {
@@ -22,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "NoteHub",
     description: "Application for managing notes",
-    url: "http://localhost:3000",
+    url: "https://notehub.com/",
     images: [
   {
     url: "https://ac.goit.global/fullstack/react/notehub-og-meta.jpg",
@@ -47,9 +44,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+     
     >
-      <body className="min-h-full flex flex-col">
+      <body className={`min-h-full flex flex-col ${roboto.variable}`}>
          <Providers>
         <Header />
         {children}

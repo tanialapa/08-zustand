@@ -60,6 +60,7 @@
     "/notes/action/create/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
+      "static/css/app/notes/action/create/page.css",
       "static/chunks/app/notes/action/create/page.js"
     ]
   }
