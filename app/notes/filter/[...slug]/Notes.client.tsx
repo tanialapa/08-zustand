@@ -3,12 +3,12 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useDebouncedCallback } from "use-debounce";
-
+import Link from "next/link";
 import NoteList from "@/components/NoteList/NoteList";
 import SearchBox from "@/components/SearchBox/SearchBox";
 import Pagination from "@/components/Pagination/Pagination";
-import Modal from "@/components/Modal/Modal";
-import NoteForm from "@/components/NoteForm/NoteForm";
+// import Modal from "@/components/Modal/Modal";
+// import NoteForm from "@/components/NoteForm/NoteForm";
 import { fetchNotes } from "@/lib/api";
 
 
@@ -18,7 +18,7 @@ export default function NotesClient({ tag }: { tag?: string }) {
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("");
   const [inputValue, setInputValue] = useState("");
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  // const [isModalOpen, setIsModalOpen] = useState(false);
 
   const updateSearch = useDebouncedCallback((value: string) => {
     setSearch(value);
@@ -35,13 +35,13 @@ export default function NotesClient({ tag }: { tag?: string }) {
   const notes = data?.notes ?? [];
   const totalPages = data?.totalPages ?? 0;
 
-  function openModal() {
-    setIsModalOpen(true);
-  }
+  // function openModal() {
+  //   setIsModalOpen(true);
+  // }
 
-  function closeModal() {
-    setIsModalOpen(false);
-  }
+  // function closeModal() {
+  //   setIsModalOpen(false);
+  // }
 
   function handleSearch(value: string) {
     setInputValue(value);
@@ -61,9 +61,9 @@ export default function NotesClient({ tag }: { tag?: string }) {
           />
         )}
 
-        <button className="button" onClick={openModal}>
-          Create note +
-        </button>
+        <Link className="button" href="/notes/action/create">
+  Create note +
+</Link>
       </header>
 
       {isLoading && <p>Loading notes...</p>}
@@ -71,11 +71,11 @@ export default function NotesClient({ tag }: { tag?: string }) {
       {!isLoading && !isError && <NoteList notes={notes} />}
       {!isLoading && !isError && notes.length === 0 && <p>No notes found.</p>}
 
-      {isModalOpen && (
+      {/* {isModalOpen && (
         <Modal onClose={closeModal}>
           <NoteForm onCancel={closeModal} onSuccess={closeModal} />
         </Modal>
-      )}
+      )} */}
     </div>
   );
 }

@@ -56,6 +56,11 @@
       "static/chunks/main-app.js",
       "static/css/app/_not-found/page.css",
       "static/chunks/app/_not-found/page.js"
+    ],
+    "/notes/action/create/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/notes/action/create/page.js"
     ]
   }
 }
