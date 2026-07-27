@@ -11,13 +11,27 @@ const PER_PAGE = 12;
 
 type Props = {
   params: Promise<{ slug: string[] }>;
-}
+};
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
 
   return {
     title: `Filter: ${slug.join("/")}`,
     description: `Notes filtered by ${slug.join("/")}`,
+    openGraph: {
+      title: `Filter: ${slug.join("/")}`,
+      description: `Notes filtered by ${slug.join("/")}`,
+      url: `https://notehub.com/notes/filter/${slug.join("/")}`,
+      images: [
+        {
+          url: "https://ac.goit.global/fullstack/react/notehub-og-meta.jpg",
+          width: 1000,
+          height: 600,
+          alt: "NoteHub",
+        },
+      ],
+      type: "website",
+    },
   };
 }
 
